@@ -3,9 +3,11 @@
 #include <vector>
 
 struct PPState {
+
   double m_{};
   double x_{};
   double v_{};
+  
 };
 
 bool operator==(PPState const& rhs, PPState const& lhs) {
