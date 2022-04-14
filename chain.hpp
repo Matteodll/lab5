@@ -80,7 +80,9 @@ class Chain {
     m_ppses = evolved;
   }
 
-  std::vector<PPState> const& state() const { return m_ppses; }
+  std::vector<PPState> const& state() const { 
+    return m_ppses;
+  }
 
   void print() {
 //    std::cout << "*** current state of m_ppses ***\n";
