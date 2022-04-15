@@ -32,23 +32,11 @@ class Chain {
   std::vector<PPState> m_ppses;
 
   PPState solve(PPState const& pps, double f, double delta_t) {
-//    std::cout << "*** function solve called ***\n";
-//    std::cout << "el in\t" << pps.m_ << '\t' << pps.x_ << '\t' << pps.v_
-//              << '\n';
     PPState ppres;
     ppres.m_ = pps.m_;
     double a = f / pps.m_;
-//    std::cout << "acc \t" << a << '\n';
-//    std::cout << "comp ppres.v_ with pps.v_= " << pps.v_ << " a= " << a
-//              << " delta_t= " << delta_t << '\n';
     ppres.v_ = pps.v_ + (a * delta_t);
-//    std::cout << "comp ppres.x_ with pps.x_= " << pps.x_
-//              << " pps.v_= " << pps.v_ << " delta_t= " << delta_t << " a= " << a
-//              << '\n';
     ppres.x_ = pps.x_ + (pps.v_ * delta_t) + (0.5 * a * delta_t * delta_t);
-//    std::cout << "el out\t" << ppres.m_ << '\t' << ppres.x_ << '\t' << ppres.v_
-//              << '\n';
-//    std::cout << "**** function solve end ****\n\n";
     return ppres;
   }
 
@@ -84,17 +72,5 @@ class Chain {
 
   std::vector<PPState> const& state() const { 
     return m_ppses;
-  }
-
-  void print() {
-//    std::cout << "*** current state of m_ppses ***\n";
-    for (unsigned int i = 0; i != m_ppses.size(); ++i) {
-  //    std::cout << "el " << i << '\t' << "m\t"
-  //              << "x\t"
-  //              << "v\n";
-  //    std::cout << "\t" << m_ppses[i].m_ << '\t' << m_ppses[i].x_ << '\t'
-  //              << m_ppses[i].v_ << '\n';
-    }
-//    std::cout << "*********************\n\n";
   }
 };

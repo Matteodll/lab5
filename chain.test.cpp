@@ -38,10 +38,8 @@ TEST_CASE("Testing Chain class") {
     Chain c{Hooke{0.1, 2.}};
     c.push_back({1., 0., 0.});
     c.push_back({1., 4., 0.});
-    c.print();
     const auto state_i = c.state();
     c.evolve(0.1);
-    c.print();
     const auto state_f = c.state();
     std::vector<PPState> vi{{1., 0., 0.}, {1., 4., 0.}};
     std::vector<PPState> vf{{1., 0.001, 0.02}, {1., 3.999, -0.02}};
