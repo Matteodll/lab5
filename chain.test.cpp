@@ -56,4 +56,33 @@ TEST_CASE("Testing Chain class") {
     CHECK(state_f[1].x_ == doctest::Approx(3.999));
     CHECK(state_f[1].v_ == doctest::Approx(-0.02));
   }
+
+  SUBCASE("3 Points chain") {
+    Chain c{Hooke{0.1, 2.}};
+    c.push_back({1., 0., 0.5});
+    c.push_back({1., 2., 0.});
+    c.push_back({1., 4., 0.});
+    const auto state_i = c.state();
+    c.evolve(1.0);
+    c.evolve(1.0);
+    const auto state_f = c.state();
+    CHECK(state_i[0].m_ == doctest::Approx(1.));
+    CHECK(state_i[0].x_ == doctest::Approx(0.));
+    CHECK(state_i[0].v_ == doctest::Approx(0.5));
+    CHECK(state_i[1].m_ == doctest::Approx(1.));
+    CHECK(state_i[1].x_ == doctest::Approx(2.));
+    CHECK(state_i[1].v_ == doctest::Approx(0.));
+    CHECK(state_i[2].m_ == doctest::Approx(1.));
+    CHECK(state_i[2].x_ == doctest::Approx(4.));
+    CHECK(state_i[2].v_ == doctest::Approx(0.));
+    CHECK(state_f[0].m_ == doctest::Approx(1.));
+    CHECK(state_f[0].x_ == doctest::Approx(0.975));
+    CHECK(state_f[0].v_ == doctest::Approx(0.45));
+    CHECK(state_f[1].m_ == doctest::Approx(1.));
+    CHECK(state_f[1].x_ == doctest::Approx(2.025));
+    CHECK(state_f[1].v_ == doctest::Approx(0.05));
+    CHECK(state_f[2].m_ == doctest::Approx(1.));
+    CHECK(state_f[2].x_ == doctest::Approx(4.));
+    CHECK(state_f[2].v_ == doctest::Approx(0.));
+  }
 }
