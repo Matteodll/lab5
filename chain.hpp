@@ -3,16 +3,10 @@
 #include <vector>
 
 struct PPState {
-
   double m_{};
   double x_{};
   double v_{};
-  
 };
-
-bool operator==(PPState const& rhs, PPState const& lhs) {
-  return (rhs.m_ == lhs.m_) && (rhs.x_ == rhs.x_) && (rhs.v_ == lhs.v_);
-}
 
 class Hooke {
   double m_k;
@@ -70,7 +64,5 @@ class Chain {
     m_ppses = evolved;
   }
 
-  std::vector<PPState> const& state() const { 
-    return m_ppses;
-  }
+  std::vector<PPState> const& state() const { return m_ppses; }
 };

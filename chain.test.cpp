@@ -43,7 +43,17 @@ TEST_CASE("Testing Chain class") {
     const auto state_f = c.state();
     std::vector<PPState> vi{{1., 0., 0.}, {1., 4., 0.}};
     std::vector<PPState> vf{{1., 0.001, 0.02}, {1., 3.999, -0.02}};
-    CHECK((state_i == vi) == true);
-    CHECK((state_f == vf) == true);
+    CHECK(state_i[0].m_ == doctest::Approx(1.));
+    CHECK(state_i[0].x_ == doctest::Approx(0.));
+    CHECK(state_i[0].v_ == doctest::Approx(0.));
+    CHECK(state_i[1].m_ == doctest::Approx(1.));
+    CHECK(state_i[1].x_ == doctest::Approx(4.));
+    CHECK(state_i[1].v_ == doctest::Approx(0.));
+    CHECK(state_f[0].m_ == doctest::Approx(1.));
+    CHECK(state_f[0].x_ == doctest::Approx(0.001));
+    CHECK(state_f[0].v_ == doctest::Approx(0.02));
+    CHECK(state_f[1].m_ == doctest::Approx(1.));
+    CHECK(state_f[1].x_ == doctest::Approx(3.999));
+    CHECK(state_f[1].v_ == doctest::Approx(-0.02));
   }
 }
