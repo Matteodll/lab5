@@ -6,7 +6,7 @@
 // Esegue la simulazione della catena, suddividendo "duration" in "steps"
 // e registrando lo stato ogni volta che si compie un numero di step pari
 // a "prescale"
-auto simulate(Chain &chain, double duration, int steps, int prescale) {
+auto simulate(Chain<Hooke> &chain, double duration, int steps, int prescale) {
   std::vector<std::vector<PPState>> v_states;
 
   double delta_t{duration / steps};
@@ -31,7 +31,7 @@ int main() {
   // m: 50 g per ogni punto
   // x: un punto ogni 1.1 cm (partendo da 0.0)
   // v: tutti i punti hanno v = 0 m/s
-  Chain chain(hooke);
+  Chain<Hooke> chain(hooke);
 
   double const p_m{0.05};
 

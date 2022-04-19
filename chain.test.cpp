@@ -28,14 +28,14 @@ TEST_CASE("Testing Hooke class") {
 
 TEST_CASE("Testing Chain class") {
   SUBCASE("Testing push_back and size") {
-    Chain c{Hooke{0.1, 2}};
+    Chain<Hooke> c{Hooke{0.1, 2}};
     c.push_back({1., 0., 0.});
     c.push_back({1., 4., 0.});
     CHECK(c.size() == 2);
   }
 
   SUBCASE("2 Points chain") {
-    Chain c{Hooke{0.1, 2.}};
+    Chain<Hooke> c{Hooke{0.1, 2.}};
     c.push_back({1., 0., 0.});
     c.push_back({1., 4., 0.});
     const auto state_i = c.state();
@@ -58,7 +58,7 @@ TEST_CASE("Testing Chain class") {
   }
 
   SUBCASE("3 Points chain") {
-    Chain c{Hooke{0.1, 2.}};
+    Chain<Hooke> c{Hooke{0.1, 2.}};
     c.push_back({1., 0., 0.5});
     c.push_back({1., 2., 0.});
     c.push_back({1., 4., 0.});

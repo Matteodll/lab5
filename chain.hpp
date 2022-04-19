@@ -21,8 +21,9 @@ class Hooke {
   }
 };
 
+template <class F>
 class Chain {
-  Hooke m_inter;
+  F m_inter;
   std::vector<PPState> m_ppses;
 
   PPState solve(PPState const& pps, double f, double delta_t) {
@@ -35,7 +36,7 @@ class Chain {
   }
 
  public:
-  Chain(Hooke const& inter) : m_inter{inter} {}
+  Chain(F const& inter) : m_inter{inter} {}
 
   void push_back(PPState const& pps) { m_ppses.push_back(pps); }
 
